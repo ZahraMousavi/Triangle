@@ -1,0 +1,43 @@
+<div class="container">
+<div class="panel panel-primary">
+  <div class="panel-heading">Triangle Form</div>
+    
+    <div class="panel-body">
+       
+    <form (ngSubmit)="onSubmit()" #heroForm="ngForm">
+      <div class="form-group">
+
+        <label for="firstSide">First side(cm)</label>
+        <input type="text" class="form-control" required 
+               [(ngModel)]="triangle.firstSide" 
+               name="firstSide" #firstSide (keypress)="isNumber($event.keyCode)">
+
+        <label for="secondSide">Second side(cm)</label>
+        <input type="text" class="form-control" required
+               [(ngModel)]="triangle.secondSide" 
+               name="secondSide" #secondSide (keypress)="isNumber($event.keyCode)">
+
+        <label for="thirdSide">Third side(cm)</label>
+        <input type="text" class="form-control" required 
+               [(ngModel)]="triangle.thirdSide" 
+               name="thirdSide" #thirdSide  (keypress)="isNumber($event.keyCode)">      
+      </div>
+
+      <button type="submit" class="btn btn-primary">Specify type of triangle</button>
+      <div class="row">
+      <div [hidden]="!errorMessage" class="alert alert-danger">
+          {{errorMessage}}
+      </div>
+
+      <div [hidden]="!message" class="alert alert-success">
+         These numbers are sides of <strong>{{message}}</strong> triangle.
+      </div>
+      </div>
+    </form>
+</div>
+      <div [hidden]="!showInfo" id="info" class="alert alert-info">
+          <a (click)="showInfo=false" class="close" data-dismiss="alert" aria-label="close">&times;</a>
+          <strong>Information: </strong>Enter three arbitary numbers as sides of a triangle and click on the button to check the type of the triangle.
+      </div> 
+</div>
+</div>
