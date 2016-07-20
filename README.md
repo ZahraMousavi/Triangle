@@ -1,5 +1,5 @@
 # Triangle
-The application takes the lengths of the triangle's three sides as input and return whether the triangle is equilateral, isosceles or scalene.
+Application takes the lengths of the triangle's three sides as input and return whether the triangle is equilateral, isosceles or scalene.
 
 ## Technologies involved:
 ### * Angular2 (TypeScript)
