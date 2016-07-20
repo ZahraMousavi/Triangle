@@ -1,4 +1,4 @@
-export class TriangleSides {
+export class Triangle {
 constructor(
     public firstSide: string,
     public secondSide : string,

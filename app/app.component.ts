@@ -1,15 +1,21 @@
 import {Component} from "@angular/core";
-import { NgForm }    from '@angular/forms';
+import { ROUTER_DIRECTIVES } from '@angular/router';
 
-import { TriangleFormComponent } from './triangle-form.component';
+
+import { TriangleComponent } from './triangle/triangle.component';
+import { WelcomeComponent } from './home/welcome.component';
 
 @Component ({
     selector : 'tr-app',
     templateUrl : "app/app.component.html",
-    directives: [TriangleFormComponent]    
+    
+    directives: [ ROUTER_DIRECTIVES, TriangleComponent, WelcomeComponent],
+    precompile: [TriangleComponent, WelcomeComponent]
 })
+
 
 export class AppComponent{
 
+title : string = "Teiangle challenge";
 
 }
