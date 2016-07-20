@@ -24,3 +24,4 @@ The application takes the lengths of the triangle's three sides as input and ret
 ![jasmine](https://raw.githubusercontent.com/ZahraMousavi/Triangle/master/images/jasmine.png)       
  
 
+## Enjoy!
