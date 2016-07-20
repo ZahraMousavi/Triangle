@@ -16,19 +16,22 @@ submitted = false;
 showInfo = true;
 message: string = "";
 errorMessage: string = "";
-typeOfTriangle: string[] = ['a scalene', 'an isosceles', 'an equilateral'];
+typeOfTriangle: string[] = ['a scalene', 'an isosceles', 'an equilateral', 'invalid input'];
 
-// prevent user to enter anything else than number inside inputboxes 
-// (Ascii code for digits are between 48 for 0 and 57 for 9)
-isNumber(charCode: number): boolean {
-  if (charCode < 48 || charCode > 57) {
-    return false;
+// If input is a number and is an ASCII code between 48 for 0 and 57 for 9, return true, otherwise return false
+isASCIICodeOfANumber(charCode: number): boolean {
+  if (typeof charCode === 'number' && charCode >= 48 && charCode <= 57) {
+    return true;
   }
-  return true;
+  return false;
 }
 
-// Check if three numbers can form a triangle or not?
+// If inputs are valid numbers greater than zero and three numbers provided can form a triangle( meet all three conditions: a+b>c and a+c>b and b+c>a), return true otherwise return false
 isTriangle(a: number, b: number, c: number): boolean {
+  // check for invalid data
+  if (typeof a !== 'number' || typeof b !== 'number' || typeof c !== 'number' || a <= 0 || b <= 0 || c <= 0 ){
+    return false;
+  }
   // Check if a+b>c and a+c>b and b+c>a
   if (!this.isSumOfFirstTwoSidesGreaterThanTheOther(a, b, c)) {
     return false;
@@ -42,45 +45,54 @@ isTriangle(a: number, b: number, c: number): boolean {
   return true;
 }
 
-// Check if sum of the first two numbers is greater than the other number
+// If inputs are valid numbers and sum of the first two numbers is greater than the other number, return true otherwise return false
 isSumOfFirstTwoSidesGreaterThanTheOther (a: number, b: number, c: number) {
+  // check for invalid data
+  if (typeof a !== 'number' || typeof b !== 'number' || typeof c !== 'number' ){
+    return false;
+  }
   return a + b > c;
 };
 
-// determine the type of the triangle (Scalene, Isosceles or Equilateral)
-getTypeOfTriangle(a: number, b: number, c: number): number {
-  // if none of the sides are equal it matches the this.typeOfTriangle[0]
-  var typeOfTriangle = 0;
-  if (this.isTwoSidesEqual(a, b)) {
-    typeOfTriangle++;
+// If inputs are not valid numbers return 3, if all the numbers are different return 0, if two numbers are equal return 1 and if all the numbers are equal return 2
+numberOfEqualPairs(a: number, b: number, c: number): number {
+    // check for invalid data
+  if (typeof a !== 'number' || typeof b !== 'number' || typeof c !== 'number'|| isNaN(a) || isNaN(b) || isNaN(c)) {
+    return 3;
   }
-  if (this.isTwoSidesEqual(a, c)) {
-    typeOfTriangle++;
+  var count = 0;
+  if (this.isTwoNumbersEqual(a, b)) {
+    count++;
   }
-  if (this.isTwoSidesEqual(b, c)) {
-    typeOfTriangle++;
+  if (this.isTwoNumbersEqual(a, c)) {
+    count++;
   }
-  // if all three sides are equal it matches the this.typeOfTriangle[2]
-  if (typeOfTriangle === 3) {
-    typeOfTriangle = 2;
+  if (this.isTwoNumbersEqual(b, c)) {
+    count++;
   }
-  return typeOfTriangle;
+  if (count === 3) {
+    count = 2;
+  }
+  return count;
 };
 
-// check if two sides are equal 
-isTwoSidesEqual(a: number, b: number): boolean {
+// If both of inputs are valid numbers and equal return true otherwise return false 
+isTwoNumbersEqual(a: number, b: number): boolean {
+if (typeof a !== 'number' || typeof b !== 'number') {
+    return false;
+  }  
   return a === b;
 }
 
  // call resetForm function after given seconds
 resetFormAfter(seconds) {
   setTimeout(() => {
-  this.resetForm();
+  this.resetFormAndMessageBoxes();
   }, seconds * 1000);
 }
 
-// reset forms and messages
-resetForm(){
+// reset form and message boxs
+resetFormAndMessageBoxes(){
     this.errorMessage = null;
     this.message = null;
     this.triangle.firstSide = "";
@@ -102,7 +114,7 @@ onSubmit() {
     this.resetFormAfter(4);
   } else {
     // check type of the triangle
-    this.message = this.typeOfTriangle[this.getTypeOfTriangle(firstSide, secondSide, thirdSide)];
+    this.message = this.typeOfTriangle[this.numberOfEqualPairs(firstSide, secondSide, thirdSide)];
     // clear message and inputboxes after 6 seconds
     this.resetFormAfter(6);
   }

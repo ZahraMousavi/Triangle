@@ -9,17 +9,17 @@
         <label for="firstSide">First side(cm)</label>
         <input type="text" class="form-control" required 
                [(ngModel)]="triangle.firstSide" 
-               name="firstSide" #firstSide (keypress)="isNumber($event.keyCode)">
+               name="firstSide" #firstSide (keypress)="isASCIICodeOfANumber($event.keyCode)">
 
         <label for="secondSide">Second side(cm)</label>
         <input type="text" class="form-control" required
                [(ngModel)]="triangle.secondSide" 
-               name="secondSide" #secondSide (keypress)="isNumber($event.keyCode)">
+               name="secondSide" #secondSide (keypress)="isASCIICodeOfANumber($event.keyCode)">
 
         <label for="thirdSide">Third side(cm)</label>
         <input type="text" class="form-control" required 
                [(ngModel)]="triangle.thirdSide" 
-               name="thirdSide" #thirdSide  (keypress)="isNumber($event.keyCode)">      
+               name="thirdSide" #thirdSide  (keypress)="isASCIICodeOfANumber($event.keyCode)">      
       </div>
 
       <button type="submit" class="btn btn-primary">Specify type of triangle</button>
