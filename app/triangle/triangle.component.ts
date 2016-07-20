@@ -29,18 +29,17 @@ isNumber(charCode: number): boolean {
 
 // Check if three numbers can form a triangle or not?
 isTriangle(a: number, b: number, c: number): boolean {
-  var isTriangle = true;
   // Check if a+b>c and a+c>b and b+c>a
   if (!this.isSumOfFirstTwoSidesGreaterThanTheOther(a, b, c)) {
-    isTriangle = false;
+    return false;
   }
   if (!this.isSumOfFirstTwoSidesGreaterThanTheOther(a, c, b)) {
-    isTriangle = false;
+    return false;
   }
   if (!this.isSumOfFirstTwoSidesGreaterThanTheOther(b, c, a)) {
-    isTriangle = false;
+    return false;
   }
-  return isTriangle;
+  return true;
 }
 
 // Check if sum of the first two numbers is greater than the other number
