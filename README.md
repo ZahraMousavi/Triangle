@@ -19,5 +19,7 @@ The application takes the lengths of the triangle's three sides as input and ret
        * Determines the type of the triangle
 ![triangle](https://raw.githubusercontent.com/ZahraMousavi/Triangle/master/images/triangle.png)       
    
-       
+ ##For testing the application navigate to unit-tests.html
+![jasmine](https://raw.githubusercontent.com/ZahraMousavi/Triangle/master/images/jasmine.png)       
+ 
 
