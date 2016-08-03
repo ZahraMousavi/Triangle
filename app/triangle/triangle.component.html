@@ -7,21 +7,20 @@
       <div class="form-group">
 
         <label for="firstSide">First side(cm)</label>
-        <input type="text" class="form-control" required 
+        <input type="number" class="form-control" required 
                [(ngModel)]="triangle.firstSide" 
-               name="firstSide" #firstSide (keypress)="isASCIICodeOfANumber($event.keyCode)">
+               name="firstSide" #firstSide min="0" step="any" >
 
         <label for="secondSide">Second side(cm)</label>
-        <input type="text" class="form-control" required
+        <input type="number" class="form-control" required
                [(ngModel)]="triangle.secondSide" 
-               name="secondSide" #secondSide (keypress)="isASCIICodeOfANumber($event.keyCode)">
+               name="secondSide" #secondSide min="0" step="any">
 
         <label for="thirdSide">Third side(cm)</label>
-        <input type="text" class="form-control" required 
+        <input type="number" class="form-control" required 
                [(ngModel)]="triangle.thirdSide" 
-               name="thirdSide" #thirdSide  (keypress)="isASCIICodeOfANumber($event.keyCode)">      
+               name="thirdSide" #thirdSide min="0" step="any">      
       </div>
-
       <button type="submit" class="btn btn-primary">Specify type of triangle</button>
       <div class="row">
       <div [hidden]="!errorMessage" class="alert alert-danger">

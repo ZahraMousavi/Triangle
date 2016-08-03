@@ -8,16 +8,26 @@ let component : TriangleComponent;
     component = new TriangleComponent();
   });
   //assert
-  it("triangle.firstSide is defined as ''", () => {
+  it("triangle.firstSide is defined", () => {
   expect(component.triangle.firstSide).toBeDefined();
 });
-  //assert
-  it("triangle.secondSide is defined as ''", () => {
-  expect(component.triangle.secondSide).toBeDefined();
+  it("triangle.firstSide is null", () => {
+  expect(component.triangle.firstSide).toBe(null);
 });
   //assert
-  it("triangle.thirdSide is defined as ''", () => {
+  it("triangle.secondSide is defined", () => {
+  expect(component.triangle.secondSide).toBeDefined();
+});
+  it("triangle.secondSide is null", () => {
+  expect(component.triangle.secondSide).toBe(null);
+});
+  //assert
+  it("triangle.thirdSide is defined", () => {
   expect(component.triangle.thirdSide).toBeDefined();
+});
+  //assert
+  it("triangle.thirdSide is null", () => {
+  expect(component.triangle.thirdSide).toBe(null);
 });
   //assert
   it("submitted is false", () => {
@@ -28,14 +38,24 @@ let component : TriangleComponent;
   expect(component.showInfo).toBe(true);
 });
   //assert
-  it("message is defined as ''", () => {
+  it("message is defined", () => {
   expect(component.message).toBeDefined();
 });
+  it("message is null", () => {
+  expect(component.message).toBe(null);
+});
   //assert
-  it("errorMessage is defined as ''", () => {
+  it("errorMessage is defined", () => {
   expect(component.errorMessage).toBeDefined();
 });
+  it("errorMessage is null", () => {
+  expect(component.errorMessage).toBe(null);
+});
    //return "a scalene" for 0, "an isosceles" for 1, "an equilateral" for 2 and "invalid input" for 3
+  //assert
+  it("typeOfTriangle array contains 'invalid input' ", () => {
+  expect(component.typeOfTriangle).toContain('invalid input');
+});
   //assert
   it("typeOfTriangle array contains 'a scalene' ", () => {
   expect(component.typeOfTriangle).toContain('a scalene');
@@ -63,43 +83,6 @@ let component : TriangleComponent;
    //assert
   it('typeOfTriangle[0] is "a scalene"', () => {
   expect(component.typeOfTriangle[0]).toBe('a scalene');
-});
-});
-
-// isASCIICodeOfANumber()
-describe('isASCIICodeOfANumber(): If input is a number and is an ASCII code between 48 for 0 and 57 for 9, return true, otherwise return false.', () => {
-let component : TriangleComponent;  
-beforeEach(() => {
-    // establish content
-    component = new TriangleComponent();
-  });
-   //assert
-  it('NaN is not ASCII code of a digit', () => {
-  expect(component.isASCIICodeOfANumber (NaN)).not.toEqual(true);
-});
-   //assert
-  it('null is not ASCII code of a digit', () => {
-  expect(component.isASCIICodeOfANumber (null)).not.toEqual(true);
-});
-   //assert
-  it('undefined is not ASCII code of a digit', () => {
-  expect(component.isASCIICodeOfANumber (undefined)).not.toEqual(true);
-});
-   //assert
-  it('"0" is not ASCII code of a digit ', () => {
-  expect(component.isASCIICodeOfANumber ('0')).not.toEqual(true);
-});
-   //assert
-  it('48 is ASCII code of 0 which is ASCII code of a digit ', () => {
-  expect(component.isASCIICodeOfANumber (48)).toEqual(true);
-});
-   //assert
-  it('ASCII code of 9 is ASCII code of a digit', () => {
-  expect(component.isASCIICodeOfANumber ('9'.charCodeAt(0))).toEqual(true);
-});
-   //assert
-  it('ASCII code "a" is not ASCII code of a digit', () => {
-  expect(component.isASCIICodeOfANumber ('a'.charCodeAt(0))).not.toEqual(true);
 });
 });
 
@@ -254,24 +237,24 @@ let component : TriangleComponent;
   beforeEach(() => {
     // establish content
     component = new TriangleComponent();  
-    component.triangle.firstSide = "SomeThing";       
-    component.triangle.firstSide = "SomeThing";       
-    component.triangle.firstSide = "SomeThing";
+    component.triangle.firstSide = 5;       
+    component.triangle.firstSide = 8;       
+    component.triangle.firstSide = 6;
     component.errorMessage = "SomeThing";    
     component.message = "SomeThing";
     component.resetFormAndMessageBoxes(); 
 });
    //assert
   it('firstSide is reset', () => {
-    expect(component.triangle.firstSide).toBe(""); 
+    expect(component.triangle.firstSide).toBe(null); 
 });  
    //assert
   it('secondSide is reset', () => {
-    expect(component.triangle.secondSide).toBe(""); 
+    expect(component.triangle.secondSide).toBe(null); 
 });  
    //assert
   it('thirdSide is reset', () => {
-    expect(component.triangle.thirdSide).toBe(""); 
+    expect(component.triangle.thirdSide).toBe(null); 
 });  
    //assert
   it('message is reset', () => {

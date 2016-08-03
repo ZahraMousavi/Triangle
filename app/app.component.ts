@@ -16,6 +16,6 @@ import { WelcomeComponent } from './home/welcome.component';
 
 export class AppComponent{
 
-title : string = "Teiangle challenge";
+title : string = "Triangle challenge";
 
 }

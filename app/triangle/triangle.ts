@@ -1,7 +1,7 @@
 export class Triangle {
 constructor(
-    public firstSide: string,
-    public secondSide : string,
-    public thirdSide : string
+    public firstSide: number,
+    public secondSide : number,
+    public thirdSide : number
   ) {  }
 }

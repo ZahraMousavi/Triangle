@@ -7,7 +7,9 @@
 .alert{
     margin: 15px;    
 }
-
+.ng-untouched {
+  border-left: 1px solid #ccc; /* normal */
+}
 /*.panel-heading{
     font-size: 20px;
 }*/

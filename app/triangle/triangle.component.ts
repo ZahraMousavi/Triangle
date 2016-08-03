@@ -4,27 +4,18 @@ import { NgForm }    from '@angular/forms';
 import { Triangle }    from './triangle';
 
 @Component({
-  selector: 'triangle-form',
   templateUrl: 'app/triangle/triangle.component.html',
   styleUrls:['app/triangle/triangle.css']
 })
 
 export class TriangleComponent {
 // initialize variables
-triangle = new Triangle('', '', '');
+triangle = new Triangle(null, null, null);
 submitted = false;
 showInfo = true;
-message: string = "";
-errorMessage: string = "";
+message: string = null;
+errorMessage: string = null;
 typeOfTriangle: string[] = ['a scalene', 'an isosceles', 'an equilateral', 'invalid input'];
-
-// If input is a number and is an ASCII code between 48 for 0 and 57 for 9, return true, otherwise return false
-isASCIICodeOfANumber(charCode: number): boolean {
-  if (typeof charCode === 'number' && charCode >= 48 && charCode <= 57) {
-    return true;
-  }
-  return false;
-}
 
 // If inputs are valid numbers greater than zero and three numbers provided can form a triangle( meet all three conditions: a+b>c and a+c>b and b+c>a), return true otherwise return false
 isTriangle(a: number, b: number, c: number): boolean {
@@ -93,19 +84,19 @@ resetFormAfter(seconds) {
 
 // reset form and message boxs
 resetFormAndMessageBoxes(){
-    this.errorMessage = null;
-    this.message = null;
-    this.triangle.firstSide = "";
-    this.triangle.secondSide = "";
-    this.triangle.thirdSide = "";
+    this.errorMessage =
+    this.message =
+    this.triangle.firstSide =
+    this.triangle.secondSide =
+    this.triangle.thirdSide = null;
 }
 
 // show either error message or type of triangle 
 onSubmit() {
-  // convert input type text to number
-  var firstSide = Number(this.triangle.firstSide);
-  var secondSide = Number(this.triangle.secondSide);
-  var thirdSide = Number(this.triangle.thirdSide);
+  // aliasing input numbers
+  var firstSide = this.triangle.firstSide;
+  var secondSide = this.triangle.secondSide;
+  var thirdSide = this.triangle.thirdSide;
   // check if these three numbers can form a triangle
   if (!this.isTriangle(firstSide, secondSide, thirdSide)) {
     // show error message
